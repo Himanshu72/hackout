@@ -41,7 +41,7 @@ indexRouter.post("/partnerLogin", (req, res) => {
           partnerObject: PartnerValues
         });
       } else {
-        res.render("pages/login", {
+        res.render("pages/partnerLogin", {
           succ: false,
           err: true
         });
@@ -72,7 +72,7 @@ indexRouter.post("/consumerLogin", (req, res) => {
           consumerObject: ConsumerValues
         });
       } else {
-        res.render("pages/login", {
+        res.render("pages/consumerLogin", {
           succ: false,
           err: true
         });

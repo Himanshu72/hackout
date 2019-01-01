@@ -156,41 +156,41 @@
                                                                 <div class="col">
                                                                     <!-- First name -->
                                                                     <input type="text" required name="Fname"
-                                                                        id="defaultRegisterFormFirstName" class="form-control"
-                                                                        placeholder="First name">
+                                                                        id="defaultRegisterFormFirstName" class="form-control edit"
+                                                                        value="<%= consumerObject.Fname%>">
                                                                 </div>
                                                                 <div class="col">
                                                                     <!-- Last name -->
                                                                     <input type="text" required name="Lname"
-                                                                        id="defaultRegisterFormLastName" class="form-control"
-                                                                        placeholder="Last name">
+                                                                        id="defaultRegisterFormLastName" class="form-control edit"
+                                                                         value="<%= consumerObject.Lname%>">
                                                                 </div>
                                                             </div>
                                                             <!-- E-mail -->
                                                             <input type="text" required name="address"
-                                                                id="defaultRegisterFormEmail" class="form-control mb-4"
-                                                                placeholder="Address">
+                                                                id="defaultRegisterFormEmail" class="form-control mb-4 edit"
+                                                                value="<%= consumerObject.Address%>" placeholder="Address">
                                                                 
                                                              <!-- password -->
                                                              <input type="text" required name="postal"
                                                                 id="defaultRegisterFormEmail" class="form-control mb-4"
-                                                                placeholder="Enter Postal Code">
+                                                                 value="<%= consumerObject.postalcode%>" placeholder="Postal Code">
         
                                                              
                                                                 <input type="text" required name="city"
-                                                                id="defaultRegisterFormEmail" class="form-control mb-4"
-                                                                placeholder="Enter City">   
+                                                                id="defaultRegisterFormEmail" class="form-control mb-4 edit"
+                                                                value="<%= consumerObject.city%>" placeholder="City">   
                                                                 
                                                                 <div class="form-group">
                                                              
                                                                     <input type="text" required name="Phone"
-                                                                    id="defaultRegisterFormEmail" class="form-control mb-4"
-                                                                    placeholder="Enter Phone Number">   
+                                                                    id="defaultRegisterFormEmail" class="form-control mb-4 edit"
+                                                                    value="<%= consumerObject.phone%>" placeholder="Phone Number">   
                                                                     <!-- Phone number -->
                                                              
                                                                 <input type="text" required name="text"
-                                                                    id="defaultRegisterPhonePassword" class="form-control"
-                                                                    placeholder="Enter Qualification"
+                                                                    id="defaultRegisterPhonePassword" class="form-control edit"
+                                                                    placeholder="Qualification"  value="<%= consumerObject.qualification%>"
                                                                     aria-describedby="defaultRegisterFormPhoneHelpBlock">
                                                                 </div>
 
@@ -200,21 +200,20 @@
                                                                
                                                                 <select name="gender" required
                                                                     class="browser-default custom-select mb-4">
-                                                                    <option value="" class="grey-text" selected disabled>Choose
-                                                                       your gender</option>
-                                                                    <option value="Male">Male</option>
+                                                                    <option  placeholder= "Gender"  value="<%= consumerObject.gender%>" class="grey-text edit" selected disabled></option>
+                                                                    <option value="Male">Male</option> 
                                                                     <option value="Female">Female</option>
                                                                     <option value="Others">Others</option>
         
                                                                 </select>
-                                                                <textarea class="form-control" placeholder="BIO"></textarea>
+                                                                <textarea class="form-control edit" value="<%= consumerObject.gender%> placeholder="About"></textarea>
                                                             </div>
                                                             
         
                                                             
         
                                                             <div class="text-center">
-                                                                <input type="submit" value="Edit" class="btn btn-purple round ">
+                                                                <input type="button" value="Edit" class="btn btn-purple round ">
                                                                                                                             </div>
                                                         </form>
         
@@ -443,7 +442,13 @@
 </footer>
 <!-- Footer -->
 
+<script >
+let edits=document.querySelectorAll("edit");
+for(let edit:edits){
+    edit.disabled=true;
+}
 
+</script>
 <!--Custom JS-->
 <script type="text/javascript" src="js/script.js"></script>
 
