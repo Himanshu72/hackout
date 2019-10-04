@@ -6,8 +6,11 @@ exports.create = (req, res) => {
   const consumer = new Consumer({
     // Fname: req.body.Fname,
     // Lname: req.body.Lname
-    Fname: "Test1",
-    Lname: "Test2"
+    Fname: "koja",
+    Lname: "lokhh",
+    email: "ooiikk",
+    phone: 8778899977,
+    aadhar: 0909754212
   });
 
   // Save consumer in the database

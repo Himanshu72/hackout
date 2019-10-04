@@ -6,16 +6,11 @@ exports.create = (req, res) => {
   const partner = new Partner({
     // Fname: req.body.Fname,
     // Lname: req.body.Lname
-    Fname: "h",
-    Lname: "j",
-    email: "hj",
-    phone: 232,
-    gender: "male",
-    address: "wewe",
-    qualification: "ba",
-    bio: "hey",
-    adhar: 1212,
-    language: ["Eng", "Guj"]
+    Fname: "testqw",
+    Lname: "mokju",
+    email: "ihjkihbhgvjhgc",
+    aadhar: 98798765,
+    phone: 87867547
   });
 
   // Save Partner in the database

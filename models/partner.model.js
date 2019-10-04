@@ -5,66 +5,59 @@ const NewPartnerSchema = new Schema(
   {
     Fname: {
       type: String,
-      unique: false,
-      required: false
+      required: true
     },
     Lname: {
       type: String,
-      unique: false,
-      required: false
+      required: true
     },
 
     email: {
       type: String,
       unique: true,
-      required: false
+      required: true
     },
     phone: {
       type: Number,
-      unique: true,
       required: false
     },
     gender: {
       type: String,
-      unique: false,
       required: false
     },
     age: {
       type: String,
-      unique: false,
       required: false
     },
 
     address: {
       type: String,
-      unique: false,
       required: false
     },
 
     qualification: {
       type: String,
-      unique: false,
       required: false
     },
     bio: {
       type: String,
-      unique: false,
       required: false
     },
     aadhar: {
       type: Number,
       unique: true,
-      required: false
+      required: true
     },
     languages: {
       type: Array,
-      required: true
+      required: false
     }
   },
   {
     timestamps: true
   }
 );
+//NewPartnerSchema.plugin(require("mongoose-beautiful-unique-validation"));
 
 // Export the model
 module.exports = mongoose.model("Partner", NewPartnerSchema);
