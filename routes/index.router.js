@@ -6,4 +6,7 @@ indexRouter.get("/", (req, res) => {
   res.render("pages/index", {});
 });
 
+indexRouter.get("/contactUs", (req, res) => {
+  res.render("pages/contactUs", {});
+});
 module.exports = indexRouter;

@@ -7,8 +7,10 @@ const partner = require("../controllers/partner.controller.js");
 partnerRouter.post("/partner", partner.create);
 
 // Retrieve all partner
-partnerRouter.get("/partner", partner.findAll);
-
+//partnerRouter.get("/partner", partner.findAll);
+partnerRouter.get("/partnerRegisteration", (req, res) => {
+  res.render("pages/partnerRegisteration");
+});
 // Retrieve a single Note with noteId
 partnerRouter.get("/partner/:PartnerId", partner.findOne);
 

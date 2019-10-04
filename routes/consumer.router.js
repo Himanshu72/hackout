@@ -4,11 +4,13 @@ const consumerRouter = express.Router();
 const consumer = require("../controllers/consumer.controller.js");
 
 // Create a new Note
+//consumerRouter.post("/consumer", consumer.create);
 consumerRouter.post("/consumer", consumer.create);
-
 // Retrieve all consumer
-consumerRouter.get("/consumer", consumer.findAll);
-
+//consumerRouter.get("/consumer", consumer.findAll);
+consumerRouter.get("/consumerRegisteration", (req, res) => {
+  res.render("pages/consumerRegisteration");
+});
 // Retrieve a single Note with noteId
 consumerRouter.get("/consumer/:ConsumerId", consumer.findOne);
 

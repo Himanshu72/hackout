@@ -2,6 +2,12 @@ const Partner = require("../models/partner.model.js");
 
 // Create and Save a new Partner
 exports.create = (req, res) => {
+  //   // Validate Request
+  //   if (!req.body.content) {
+  //     return res.status(400).send({
+  //       message: "Partner content can not be empty"
+  //     });
+  //   }
   // Create a Partner
   const partner = new Partner({
     // Fname: req.body.Fname,
@@ -65,19 +71,22 @@ exports.findOne = (req, res) => {
 
 // Update a Partnerer identified by the PartnerId in the request
 exports.update = (req, res) => {
-  // Validate Request
-  if (!req.body.content) {
-    return res.status(400).send({
-      message: "Partner content can not be empty"
-    });
-  }
+  //   // Validate Request
+  //   if (!req.body.content) {
+  //     return res.status(400).send({
+  //       message: "Partner content can not be empty"
+  //     });
+  //   }
 
   // Find Partner and update it with the request body
-  Partnerser.findByIdAndUpdate(
+  Partner.findByIdAndUpdate(
     req.params.PartnerId,
     {
-      title: req.body.title || "Untitled Partner",
-      content: req.body.content
+      Fname: "newone",
+      Lname: "anotherone",
+      email: "lastone",
+      aadhar: 23234676,
+      phone: 12466423
     },
     { new: true }
   )
