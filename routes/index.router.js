@@ -5,8 +5,10 @@ const indexRouter = express.Router();
 indexRouter.get("/", (req, res) => {
   res.render("pages/index", {});
 });
-
 indexRouter.get("/contactUs", (req, res) => {
   res.render("pages/contactUs", {});
+});
+indexRouter.get("/login", (req, res) => {
+  res.render("pages/login", {});
 });
 module.exports = indexRouter;
