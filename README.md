@@ -1,6 +1,6 @@
-# SHAKSHAM
+# SAKSHAM
 
-Shaksham is a conveniency platform for differently abled people.
+Saksham is a conveniency platform for differently abled people.
 
 ## Installation
 
