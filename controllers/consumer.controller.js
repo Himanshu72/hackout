@@ -6,8 +6,8 @@ exports.create = (req, res) => {
   const consumer = new Consumer({
     // Fname: req.body.Fname,
     // Lname: req.body.Lname
-    Fname: "Try",
-    Lname: "Test"
+    Fname: "Test1",
+    Lname: "Test2"
   });
 
   // Save consumer in the database
