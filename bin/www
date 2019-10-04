@@ -5,11 +5,11 @@
  */
 
 var app = require('../app');
-<<<<<<< HEAD
+
 var debug = require('debug')('hackout:server');
-=======
+
 var debug = require('debug')('hackout-switch:server');
->>>>>>> origin/monarch
+
 var http = require('http');
 
 /**
