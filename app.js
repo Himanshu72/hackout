@@ -9,6 +9,22 @@ const logger = require("morgan");
 // Set the bodyparser
 const bodyParser = require("body-parser");
 
+// Set up mongoose connection
+const mongoose = require("mongoose");
+mongoose
+  .connect("mongodb://localhost:27017/hackout", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true
+  })
+  .then(() => {
+    console.log("MongoDB Connected");
+  })
+  .catch(err => {
+    // mongoose connection error will be handled here
+    console.error("App starting error:", err.stack);
+  });
+
 const indexRouter = require("./routes/index");
 
 const app = express();
