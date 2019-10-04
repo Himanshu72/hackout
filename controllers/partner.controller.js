@@ -6,11 +6,11 @@ exports.create = (req, res) => {
   const partner = new Partner({
     // Fname: req.body.Fname,
     // Lname: req.body.Lname
-    Fname: "testqw",
-    Lname: "mokju",
-    email: "ihjkihbhgvjhgc",
-    aadhar: 98798765,
-    phone: 87867547
+    Fname: "truhd",
+    Lname: "bgcjdh",
+    email: "jbkhubhg",
+    aadhar: 3434232,
+    phone: 878434367547
   });
 
   // Save Partner in the database
@@ -39,6 +39,7 @@ exports.findAll = (req, res) => {
       });
     });
 };
+
 // Find a single Partner with a PartnerId
 exports.findOne = (req, res) => {
   Partner.findById(req.params.PartnerId)

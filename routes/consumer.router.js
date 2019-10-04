@@ -10,12 +10,12 @@ consumerRouter.post("/consumer", consumer.create);
 consumerRouter.get("/consumer", consumer.findAll);
 
 // Retrieve a single Note with noteId
-consumerRouter.get("/consumer/:consumerId", consumer.findOne);
+consumerRouter.get("/consumer/:ConsumerId", consumer.findOne);
 
 // Update a Note with noteId
-consumerRouter.put("/consumer/:consumerId", consumer.update);
+consumerRouter.put("/consumer/:ConsumerId", consumer.update);
 
 // Delete a Note with noteId
-consumerRouter.delete("/consumer/:consumerId", consumer.delete);
+consumerRouter.delete("/consumer/:ConsumerId", consumer.delete);
 
 module.exports = consumerRouter;

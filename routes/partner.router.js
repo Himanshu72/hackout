@@ -10,12 +10,12 @@ partnerRouter.post("/partner", partner.create);
 partnerRouter.get("/partner", partner.findAll);
 
 // Retrieve a single Note with noteId
-partnerRouter.get("/partner/:partnerId", partner.findOne);
+partnerRouter.get("/partner/:PartnerId", partner.findOne);
 
 // Update a Note with noteId
-partnerRouter.put("/partner/:partnerId", partner.update);
+partnerRouter.put("/partner/:PartnerId", partner.update);
 
 // Delete a Note with noteId
-partnerRouter.delete("/partner/:partnerId", partner.delete);
+partnerRouter.delete("/partner/:PartnerId", partner.delete);
 
 module.exports = partnerRouter;
