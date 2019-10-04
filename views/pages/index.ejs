@@ -1,0 +1,54 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+ 
+</head>
+
+<body>
+  <!-- Start your project here-->
+  <!--Main Navigation-->
+  <header>
+ <% include ../partials/header %>
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="mt-5">
+    
+    <div class="container">
+    <h1>HELLO</h1>
+   </div>
+     
+  </main>
+  <!--Main layout-->
+
+  <!-- Footer -->
+  <footer class="page-footer font-small unique-color-dark">
+  <% include ../partials/footer %>
+  </footer>
+  <!-- Footer -->
+  <!-- End your project here-->
+
+  <!-- SCRIPTS -->
+ 
+  <script type="text/javascript">
+    let date = new Date();
+    document.getElementById("copyrightDate").innerHTML = date.getFullYear();
+  </script>
+  <!-- Gogogle Maps JavaScript -->
+  <script type="text/javascript" src="../js/script.js"></script>
+  <!-- JQuery -->
+  <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="../js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="../js/mdb.min.js"></script>
+</body>
+
+</html>
