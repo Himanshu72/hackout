@@ -5,21 +5,21 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.render("pages/index", {});
 });
-const user = require("../controllers/user.controller.js");
+const consumer = require("../controllers/consumer.controller.js");
 
 // Create a new Note
-router.post("/user", user.create);
+router.post("/consumer", consumer.create);
 
-// Retrieve all user
-router.get("/user", user.findAll);
+// Retrieve all consumer
+router.get("/consumer", consumer.findAll);
 
 // Retrieve a single Note with noteId
-router.get("/user/:userId", user.findOne);
+router.get("/consumer/:consumerId", consumer.findOne);
 
 // Update a Note with noteId
-router.put("/user/:userId", user.update);
+router.put("/consumer/:consumerId", consumer.update);
 
 // Delete a Note with noteId
-router.delete("/user/:userId", user.delete);
+router.delete("/consumer/:consumerId", consumer.delete);
 
 module.exports = router;
