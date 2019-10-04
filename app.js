@@ -25,7 +25,9 @@ mongoose
     console.error("App starting error:", err.stack);
   });
 
-const indexRouter = require("./routes/index");
+const indexRouter = require("./routes/index.router");
+const consumerRouter = require("./routes/consumer.router");
+const partnerRouter = require("./routes/partner.router");
 
 const app = express();
 
@@ -40,6 +42,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use("/", consumerRouter);
+app.use("/", partnerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
