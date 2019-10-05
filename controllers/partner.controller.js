@@ -2,12 +2,12 @@ const Partner = require("../models/partner.model.js");
 
 // Create and Save a new Partner
 exports.create = (req, res) => {
-  //   // Validate Request
-  //   if (!req.body.content) {
-  //     return res.status(400).send({
-  //       message: "Partner content can not be empty"
-  //     });
-  //   }
+    // Validate Request
+    if (req.body.password !== req.body.confirmpassword) {
+      return res.status(400).send({
+        message: "Passwords should match"
+      });
+    }
   // Create a Partner
   const partner = new Partner({
     Fname: req.body.Fname,
