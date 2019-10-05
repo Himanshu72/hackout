@@ -3,13 +3,35 @@ const express = require("express");
 const createError = require("http-errors");
 const path = require("path");
 
+
 // Required for authentication
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
-
+const fileUpload = require('express-fileupload');
 const app = express();
+
+// default options
+app.use(fileUpload());
+
+app.post('/upload', function(req, res) {
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send('No files were uploaded.');
+  }
+
+  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+  let sampleFile = req.files.sampleFile;
+  let DATE = Date.now().toString();
+  // Use the mv() method to place the file somewhere on your server
+  sampleFile.mv(__dirname + `/FILE ${DATE}.jpg`, function(err) {
+    if (err)
+      return res.status(500).send(err);
+
+    res.send('File uploaded!');
+  });
+});
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser());
@@ -68,8 +90,8 @@ const ocrSpaceApi = require("ocr-space-api");
 
 var options = {
   apikey: " 8d56bdab8188957",
-  language: "eng", // Português
-  imageFormat: "image/png", // Image Type (Only png ou gif is acceptable at the moment i wrote this)
+  language: "eng", // language
+  imageFormat: "image/png", // Image Type 
   isOverlayRequired: true
 };
 

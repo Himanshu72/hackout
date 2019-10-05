@@ -1,8 +1,6 @@
 const express = require("express");
 const indexRouter = express.Router();
-
-//File Upload 
-const formidable = require('formidable');
+ 
 
 //Middlewares for Auth
 const checkAuth = require("../middlewares/checkAuth");
@@ -89,20 +87,9 @@ indexRouter.get("/upload", (req, res) => {
 });
 
 
-indexRouter.post("/upload", (req, res) => {
-  let form = new formidable.IncomingForm();
-
-    form.parse(req);
-
-    form.on('fileBegin',  (name, file) => {
-        file.path = __dirname + '/uploads/' + file.name;
-    });
-
-    form.on('file', (name, file) => {
-        console.log('Uploaded ' + file.name);
-    });
-    res.render("pages/upload");
-});
+// indexRouter.post('/upload', upload.single('myFile'), (req, res, next) => {
+//     res.render("pages/upload");
+// })
 
 indexRouter.get("/partnerDashboard", checkAuth, (req, res) => {
   res.render("pages/partnerDashboard");
