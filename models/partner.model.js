@@ -11,8 +11,8 @@ const NewPartnerSchema = new Schema(
       type: String,
       required: true
     },
-    password : {
-     type: String,
+    password: {
+      type: String,
       required: true
     },
     role: {
@@ -38,6 +38,18 @@ const NewPartnerSchema = new Schema(
     },
 
     address: {
+      type: String,
+      required: false
+    },
+    city: {
+      type: String,
+      required: false
+    },
+    country: {
+      type: String,
+      required: false
+    },
+    postalcode: {
       type: String,
       required: false
     },

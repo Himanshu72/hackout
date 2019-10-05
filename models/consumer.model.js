@@ -11,7 +11,7 @@ const NewConsumerSchema = new Schema(
       type: String,
       required: true
     },
-     password: {
+    password: {
       type: String,
       required: true
     },
@@ -39,6 +39,19 @@ const NewConsumerSchema = new Schema(
     },
 
     address: {
+      type: String,
+      required: false
+    },
+
+    city: {
+      type: String,
+      required: false
+    },
+    country: {
+      type: String,
+      required: false
+    },
+    postalcode: {
       type: String,
       required: false
     },

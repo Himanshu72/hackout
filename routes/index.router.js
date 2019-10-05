@@ -53,6 +53,10 @@ indexRouter.get("/userProfile", checkAuth, (req, res) => {
   res.render("pages/userProfile");
 });
 
+indexRouter.get("/partnerActivities", checkAuth, (req, res) => {
+  res.render("pages/partnerActivities");
+});
+
 indexRouter.get("/login", (req, res) => {
   res.render("pages/login", {});
 });
