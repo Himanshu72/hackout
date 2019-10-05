@@ -20,7 +20,7 @@ indexRouter.use((req, res, next) => {
   next();
 });
 
-indexRouter.post("/login", (req, res) => {
+indexRouter.post("/partnerLogin", (req, res) => {
   const { email, password } = req.body;
   Partner.findOne(
     {
@@ -44,6 +44,10 @@ indexRouter.post("/login", (req, res) => {
       }
     }
   );
+});
+
+indexRouter.post("/consumerLogin", (req, res) => {
+  const { email, password } = req.body;
 
   Consumer.findOne(
     {
@@ -69,11 +73,19 @@ indexRouter.post("/login", (req, res) => {
   );
 });
 
+indexRouter.get("/consumerLogin", (req, res) => {
+  res.render("pages/consumerLogin", {});
+});
+
+indexRouter.get("/partnerLogin", (req, res) => {
+  res.render("pages/partnerLogin", {});
+});
+
 indexRouter.get("/partnerDashboard", checkAuth, (req, res) => {
   res.render("pages/partnerDashboard");
 });
 
-indexRouter.get("/consumerDashboard", (req, res) => {
+indexRouter.get("/consumerDashboard", checkAuth, (req, res) => {
   res.render("pages/consumerDashboard");
 });
 
@@ -85,9 +97,6 @@ indexRouter.get("/partnerActivities", checkAuth, (req, res) => {
   res.render("pages/partnerActivities");
 });
 
-indexRouter.get("/login", (req, res) => {
-  res.render("pages/login", {});
-});
 indexRouter.get("/logout", (req, res) => {
   req.session.destroy(() => {
     res.redirect("/");
