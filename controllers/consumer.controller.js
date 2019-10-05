@@ -2,17 +2,18 @@ const Consumer = require("../models/consumer.model.js");
 
 // Create and Save a new Consumer
 exports.create = (req, res) => {
-   // Validate Request
-    if (req.body.password !== req.body.confirmpassword) {
-      return res.status(400).send({
-        message: "Passwords should match"
-      });
-    }
+  // Validate Request
+  if (req.body.password !== req.body.confirmpassword) {
+    return res.status(400).send({
+      message: "Passwords should match"
+    });
+  }
   // Create a Consumer
   const consumer = new Consumer({
     Fname: req.body.Fname,
     Lname: req.body.Lname,
     email: req.body.email,
+    password: req.body.password,
     aadhar: req.body.phone,
     phone: req.body.phone
   });

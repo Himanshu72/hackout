@@ -4,6 +4,7 @@ const indexRouter = express.Router();
 //Middlewares for Auth
 const checkAuth = require("../middlewares/checkAuth");
 const Partner = require("../models/partner.model.js");
+const Consumer = require("../models/consumer.model.js");
 
 indexRouter.get("/", (req, res) => {
   res.render("pages/index", {});
@@ -26,8 +27,8 @@ indexRouter.post("/login", (req, res) => {
       email: email,
       password: password
     },
-    (err, User) => {
-      if (User) {
+    (err, Partner) => {
+      if (Partner) {
         let loginValues = [
           {
             email: email
@@ -43,10 +44,37 @@ indexRouter.post("/login", (req, res) => {
       }
     }
   );
+
+  Consumer.findOne(
+    {
+      email: email,
+      password: password
+    },
+    (err, Consumer) => {
+      if (Consumer) {
+        let loginValues = [
+          {
+            email: email
+          }
+        ];
+        req.session.user = loginValues;
+        res.redirect("/consumerDashboard");
+      } else {
+        res.render("pages/login", {
+          succ: false,
+          err: true
+        });
+      }
+    }
+  );
 });
 
 indexRouter.get("/partnerDashboard", checkAuth, (req, res) => {
   res.render("pages/partnerDashboard");
+});
+
+indexRouter.get("/consumerDashboard", (req, res) => {
+  res.render("pages/consumerDashboard");
 });
 
 indexRouter.get("/userProfile", checkAuth, (req, res) => {
