@@ -383,6 +383,7 @@
                                           <div class="col-md-12">
                                         <div class="list-group">
                                          <% for(let item of partners){ %>
+                                         <form method="POST" action="/consumerLogin">
                                     <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start ">
                                         <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-2 h5"><%= item.Fname %></h5>
@@ -391,7 +392,10 @@
                                         <p class="mb-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
                                         blandit.</p>
                                         <small>Donec id elit non mi porta.</small>
+                                        <Br> 
+                                        <button type="submit" class="btn round btn-sm btn-teal" style="floar:left;">Request</button>
                                     </a>
+                                    </form>
                                     <% }%>
                                     </div>
                                           

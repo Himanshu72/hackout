@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 const NewRequestSchema = new Schema(
   {
+    need: {
+      type: String,
+      required: true
+    },
     examcenter: {
       type: String,
       required: true

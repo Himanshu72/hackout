@@ -6,6 +6,8 @@ const methodOverride = require("method-override");
 indexRouter.use(methodOverride(req => req.body._method));
 //Middlewares for Auth
 const checkAuth = require("../middlewares/checkAuth");
+const checkLogin = require("../middlewares/checkLogin");
+
 const Partner = require("../models/partner.model.js");
 const Consumer = require("../models/consumer.model.js");
 
@@ -106,7 +108,9 @@ indexRouter.get("/upload", (req, res) => {
 });
 
 indexRouter.get("/partnerDashboard", checkAuth, (req, res) => {
-  res.render("pages/partnerDashboard");
+  res.render("pages/partnerDashboard", {
+    partnerObject: ""
+  });
 });
 
 // indexRouter.get("/consumerDashboard", checkAuth, (req, res) => {
@@ -115,6 +119,10 @@ indexRouter.get("/partnerDashboard", checkAuth, (req, res) => {
 
 indexRouter.get("/partnerActivities", checkAuth, (req, res) => {
   res.render("pages/partnerActivities");
+});
+
+indexRouter.get("/consumerNeeds", checkAuth, (req, res) => {
+  res.render("pages/consumerNeeds");
 });
 
 indexRouter.get("/logout", (req, res) => {
