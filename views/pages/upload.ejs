@@ -4,7 +4,7 @@
   <%- include('../partial/head'); -%>
 </head>
 
-  <%- include('../partial/navbar'); -%>
+  <%- include('../partial/userNav'); -%>
 <main>
     <!--SECTION SEPARATOR-->
 
@@ -25,7 +25,7 @@
                                 <div class="card-body">
 
                                     <h2 class="font-weight-bold my-4 text-center mb-5 mt-4 head font-weight-bold">
-                                        <strong>Login To Your Account</strong>
+                                        <strong>Upload Files To Read Out</strong>
                                     </h2>
 
                                     <!--Grid row-->
@@ -38,14 +38,11 @@
                                             <div class="row pb-4">
                                               
                                                 <div class="col-xl-12">
-                                                    <img src="./img/login.svg">
+                                                    <img src="./img/addfile.svg">
                                                 </div>
 
                                             </div>
                                             <!--Grid row-->
-
-
-
 
                                         </div>
                                         <!--Grid column-->
@@ -60,24 +57,17 @@
                                                 <!--Body-->
                                                 <form class="mt-5"
                                                     method="POST" action="/partnerLogin">
-                                                  
-                                                    <!-- E-mail -->
-                                                    <input type="email" required name="email"
-                                                        id="defaultRegisterFormEmail" class="form-control mt-5 mb-4 " 
-                                                        placeholder="E-mail">
-
-
-                                                    <!-- Password -->
-                                                    <input type="password" required name="password"
-                                                        id="defaultRegisterFormPassword" class="form-control mb-4"
-                                                        placeholder="Password">
-                                                
-
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="fileInput" aria-describedby="fileInput">
+                                            <label class="custom-file-label" for="fileInput">File Label</label>
+                                        </div>
+                                    </div>
                                                     <div class="text-center">
-                                                        <input type="submit" value="Login" class="btn btn-purple round ">
-                                                        <div class="mt-4">
-                                                             <a href="/consumerLogin"> <span style="color:black;"> Are you a consumer ?</span> Login Here</a>
-                                                        </div>
+                                                        <input type="submit" value="Upload" class="btn btn-purple round ">
                                                     </div>
                                                 </form>
 
