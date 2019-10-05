@@ -4,6 +4,7 @@ const Request = require("../models/request.model.js");
 exports.create = (req, res) => {
   // Create a Partner
   const request = new Request({
+    need: req.body.need,
     examcenter: req.body.examcenter,
     field: req.body.field,
     subject: req.body.subject,

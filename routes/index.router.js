@@ -8,6 +8,7 @@ indexRouter.use(methodOverride(req => req.body._method));
 const checkAuth = require("../middlewares/checkAuth");
 const checkLogin = require("../middlewares/checkLogin");
 
+const Request = require("../models/request.model.js");
 const Partner = require("../models/partner.model.js");
 const Consumer = require("../models/consumer.model.js");
 
@@ -108,8 +109,10 @@ indexRouter.get("/upload", (req, res) => {
 });
 
 indexRouter.get("/partnerDashboard", checkAuth, (req, res) => {
-  res.render("pages/partnerDashboard", {
-    partnerObject: ""
+  Partner.find({}, function(err, partners) {
+    res.render("pages/partnerDashboard", {
+      partners: partners
+    });
   });
 });
 
@@ -122,7 +125,11 @@ indexRouter.get("/partnerActivities", checkAuth, (req, res) => {
 });
 
 indexRouter.get("/consumerNeeds", checkAuth, (req, res) => {
-  res.render("pages/consumerNeeds");
+  Request.find({}, function(err, requests) {
+    res.render("pages/consumerNeeds", {
+      needObject: requests
+    });
+  });
 });
 
 indexRouter.get("/logout", (req, res) => {
