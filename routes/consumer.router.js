@@ -16,7 +16,7 @@ consumerRouter.get("/consumerRegisteration", (req, res) => {
 consumerRouter.get("/consumer/:ConsumerId", consumer.findOne);
 
 // Update a Note with noteId
-consumerRouter.put("/consumer/:ConsumerId", consumer.update);
+consumerRouter.put("/consumerDashboard/:ConsumerId", consumer.update);
 
 // Delete a Note with noteId
 consumerRouter.delete("/consumer/:ConsumerId", consumer.delete);

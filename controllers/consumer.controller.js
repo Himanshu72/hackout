@@ -70,19 +70,19 @@ exports.findOne = (req, res) => {
 
 // Update a Consumerer identified by the ConsumerId in the request
 exports.update = (req, res) => {
-  // Validate Request
-  if (!req.body.content) {
-    return res.status(400).send({
-      message: "Consumer content can not be empty"
-    });
-  }
-
   // Find Consumer and update it with the request body
-  Consumerser.findByIdAndUpdate(
+  Consumer.findByIdAndUpdate(
     req.params.ConsumerId,
     {
-      title: req.body.title || "Untitled Consumer",
-      content: req.body.content
+      Fname: req.body.Fname,
+      Lname: req.body.Lname,
+      address: req.body.address,
+      city: req.body.city,
+      postalcode: req.body.postalcode,
+      //aadhar: req.body.phone,
+      phone: req.body.phone,
+      bio: req.body.bio,
+      qualification: req.body.qualification
     },
     { new: true }
   )
@@ -92,7 +92,7 @@ exports.update = (req, res) => {
           message: "Consumer not found with id " + req.params.ConsumerId
         });
       }
-      res.send(Consumer);
+      res.redirect("/consumerLogin");
     })
     .catch(err => {
       if (err.kind === "ObjectId") {

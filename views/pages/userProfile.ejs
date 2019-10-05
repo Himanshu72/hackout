@@ -22,16 +22,8 @@
       <div class="collapse navbar-collapse " id="navigation-bar">
         <!-- Links -->
         <ul class="navbar-nav ml-auto smooth-scroll">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="true"><%= consumerObject.Fname%></a>
-                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item text-center" href="about.html">Profile</a>
-                            <a class="dropdown-item text-center" href="help.html">Search</a>
-                            <a class="dropdown-item text-center" href="join.html">Add Needs</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-center" href="/logout">Logout</a>
-                        </div>
+                    <li class="nav-item ">
+                    <a class="dropdown-item text-center" href="/logout"> <i class="fas fa-sign-out-alt"></i> Logout</a>
                     </li>
         </ul>
         <!-- Links -->
@@ -90,9 +82,9 @@
     <div class="rgba-gradient" style="margin-top:5%;">
         <div class="container mb-5">
             <!--Section: Contact-->
-            <div class="swiper-container">
+            <div class="swiper-container ">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide">
+                  <div class="swiper-slide mb-5">
                     <section id="contact">
 
                         <div class="container h-100 d-flex justify-content-center align-items-center">
@@ -103,7 +95,7 @@
                                 <!--Grid column-->
                                 <div class="col-md-12">
         
-                                    <div class="card">
+                                    <div class="card" id="profile">
                                         <div class="card-body">
         
                                             <h2 class="font-weight-bold my-4 text-center mb-5 mt-4 head font-weight-bold">
@@ -150,8 +142,9 @@
         
         
                                                         <!--Body-->
-                                                        <form action="/partner"
+                                                        <form action="/consumerDashboard/<%= consumerObject._id%>"
                                                             method="POST">
+                                                            <input type="hidden" name="_method" value="put" />
                                                             <div class="form-row mb-4">
                                                                 <div class="col">
                                                                     <!-- First name -->
@@ -169,10 +162,10 @@
                                                             <!-- E-mail -->
                                                             <input type="text" required name="address"
                                                                 id="defaultRegisterFormEmail" class="form-control mb-4 edit"
-                                                                value="<%= consumerObject.Address%>" placeholder="Address">
+                                                                value="<%= consumerObject.address%>" placeholder="Address">
                                                                 
                                                              <!-- password -->
-                                                             <input type="text" required name="postal"
+                                                             <input type="text" required name="postalcode"
                                                                 id="defaultRegisterFormEmail" class="form-control mb-4"
                                                                  value="<%= consumerObject.postalcode%>" placeholder="Postal Code">
         
@@ -183,12 +176,12 @@
                                                                 
                                                                 <div class="form-group">
                                                              
-                                                                    <input type="text" required name="Phone"
+                                                                    <input type="text" required name="phone"
                                                                     id="defaultRegisterFormEmail" class="form-control mb-4 edit"
                                                                     value="<%= consumerObject.phone%>" placeholder="Phone Number">   
                                                                     <!-- Phone number -->
                                                              
-                                                                <input type="text" required name="text"
+                                                                <input type="text" required name="qualification"
                                                                     id="defaultRegisterPhonePassword" class="form-control edit"
                                                                     placeholder="Qualification"  value="<%= consumerObject.qualification%>"
                                                                     aria-describedby="defaultRegisterFormPhoneHelpBlock">
@@ -200,20 +193,20 @@
                                                                
                                                                 <select name="gender" required
                                                                     class="browser-default custom-select mb-4">
-                                                                    <option  placeholder= "Gender"  value="<%= consumerObject.gender%>" class="grey-text edit" selected disabled></option>
+                                                                    <option  placeholder= "Gender" class="grey-text edit" selected disabled><%= consumerObject.gender%></option>
                                                                     <option value="Male">Male</option> 
                                                                     <option value="Female">Female</option>
                                                                     <option value="Others">Others</option>
         
                                                                 </select>
-                                                                <textarea class="form-control edit" value="<%= consumerObject.gender%> placeholder="About"></textarea>
+                                                                <textarea class="form-control edit" value="<%= consumerObject.bio%> placeholder="About" name="bio"></textarea>
                                                             </div>
                                                             
         
                                                             
         
                                                             <div class="text-center">
-                                                                <input type="button" value="Edit" class="btn btn-purple round ">
+                                                                <input type="submit" value="Update" class="btn btn-purple round ">
                                                                                                                             </div>
                                                         </form>
         
@@ -237,6 +230,7 @@
                         </div>
                     </section>
                   </div>
+
                   <div class="swiper-slide">
 
                     <section id="contact">
@@ -253,7 +247,7 @@
                                       <div class="card-body">
       
                                           <h2 class="font-weight-bold my-4 text-center mb-5 mt-4 head font-weight-bold">
-                                              <strong>Book Writers</strong>
+                                              <strong>Look for writers</strong>
                                           </h2>
       
                                           <!--Grid row-->
@@ -372,8 +366,8 @@
                               <!--Grid column-->
                               <div class="col-md-12">
       
-                                  <div class="card">
-                                      <div class="card-body" style="max-height: 400px; overflow-y: scroll;"  >
+                                  <div class="card" style=" min-width: 900px; height: 700px;  overflow:scroll; position:relative;" >
+                                      <div class="card-body" >
       
                                           <h2 class="font-weight-bold my-4 text-center mb-5 mt-4 head font-weight-bold">
                                               <strong>Available Writers</strong>
@@ -381,24 +375,35 @@
       
                                           <!--Grid row-->
                                           <div class="col-md-12">
-                                          <div style="border: 1px solid black;padding: 1%;" >
-                                            <input type="text" class="form-control" disabled value="Ramesh Singh" >
-                                            
-                                            <input type="text" class="form-control" disabled value="1234567892" >
-                                            <textarea class="form-control" disabled>he knmdkem mml mlmlvvnds nodsvn vdn</textarea>
-
-                                            <div class="row">
-                                              <div class="col-md-6">
-                                                <button class="btn btn-sm btn-success " > Accept</button>
-                                              </div>
-                                              
-                                              <div class="col-md-6">
-                                                <button class="btn btn-sm btn-danger " > cancel</button>
-                                              </div>
-                                              
-                                            </div>
-
-                                          </div>
+                                        <div class="list-group">
+                                    <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start ">
+                                        <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-2 h5">John Doe</h5>
+                                        <small>3 days ago</small>
+                                        </div>
+                                        <p class="mb-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
+                                        blandit.</p>
+                                        <small>Donec id elit non mi porta.</small>
+                                    </a>
+                                    <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-2 h5">Willem Dafoe</h5>
+                                        <small class="text-muted">3 days ago</small>
+                                        </div>
+                                        <p class="mb-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
+                                        blandit.</p>
+                                        <small class="text-muted">Donec id elit non mi porta.</small>
+                                    </a>
+                                    <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-2 h5">Vincent Chase</h5>
+                                        <small class="text-muted">3 days ago</small>
+                                        </div>
+                                        <p class="mb-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
+                                        blandit.</p>
+                                        <small class="text-muted">Donec id elit non mi porta.</small>
+                                    </a>
+                                    </div>
                                           
                                           </div>
                                           <!--Grid row-->
@@ -442,13 +447,15 @@
 </footer>
 <!-- Footer -->
 
-<script >
-let edits=document.querySelectorAll("edit");
-for(let edit:edits){
-    edit.disabled=true;
-}
+// <script >
+// let edits=document.querySelectorAll(".edit");
 
-</script>
+// for(let edit in edits){
+//    console.log(edit[[[]]]);
+//     edit.disabled=true;
+// }
+
+// </script>
 <!--Custom JS-->
 <script type="text/javascript" src="js/script.js"></script>
 
@@ -474,7 +481,7 @@ window.speechSynthesis.speak(msg)
 
         }else if(swiper.activeIndex==1){
 //book writer
-var msg = new SpeechSynthesisUtterance('book writer');
+var msg = new SpeechSynthesisUtterance('Look for writers');
 window.speechSynthesis.speak(msg)
 
 

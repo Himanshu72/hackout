@@ -1,6 +1,9 @@
 const express = require("express");
 const indexRouter = express.Router();
+const methodOverride = require("method-override");
 
+// Override to REST Methods
+indexRouter.use(methodOverride(req => req.body._method));
 //Middlewares for Auth
 const checkAuth = require("../middlewares/checkAuth");
 const Partner = require("../models/partner.model.js");
