@@ -3,7 +3,6 @@ const express = require("express");
 const createError = require("http-errors");
 const path = require("path");
 
-
 // Required for authentication
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
@@ -11,7 +10,6 @@ const logger = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const app = express();
-
 
 // default options
 app.use(fileUpload());
@@ -92,6 +90,7 @@ mongoose
 const indexRouter = require("./routes/index.router");
 const consumerRouter = require("./routes/consumer.router");
 const partnerRouter = require("./routes/partner.router");
+const requestRouter = require("./routes/request.router");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -106,6 +105,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/", consumerRouter);
 app.use("/", partnerRouter);
+app.use("/", requestRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

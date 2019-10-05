@@ -69,10 +69,12 @@ indexRouter.post("/consumerLogin", (req, res) => {
           }
         ];
         const ConsumerValues = Consumer;
-        console.log(ConsumerValues);
         req.session.user = loginValues;
-        res.render("pages/userProfile", {
-          consumerObject: ConsumerValues
+        Partner.find({}, function(err, partners) {
+          res.render("pages/consumerDashboard", {
+            consumerObject: ConsumerValues,
+            partners: partners
+          });
         });
       } else {
         res.render("pages/consumerLogin", {
@@ -85,7 +87,12 @@ indexRouter.post("/consumerLogin", (req, res) => {
 });
 
 indexRouter.get("/consumerLogin", (req, res) => {
-  res.render("pages/consumerLogin", { consumerObject: "" });
+  Partner.find({}, function(err, partners) {
+    res.render("pages/consumerLogin", {
+      consumerObject: "",
+      partners: partners
+    });
+  });
 });
 
 indexRouter.get("/partnerLogin", (req, res) => {
@@ -102,13 +109,9 @@ indexRouter.get("/partnerDashboard", checkAuth, (req, res) => {
   res.render("pages/partnerDashboard");
 });
 
-indexRouter.get("/consumerDashboard", checkAuth, (req, res) => {
-  res.render("pages/userProfile");
-});
-
-indexRouter.get("/userProfile", checkAuth, (req, res) => {
-  res.render("pages/userProfile");
-});
+// indexRouter.get("/consumerDashboard", checkAuth, (req, res) => {
+//   res.render("pages/consumerDashboard");
+// });
 
 indexRouter.get("/partnerActivities", checkAuth, (req, res) => {
   res.render("pages/partnerActivities");
