@@ -34,7 +34,7 @@ indexRouter.post("/login", (req, res) => {
           }
         ];
         req.session.user = loginValues;
-        res.redirect("/dashboard");
+        res.redirect("/partnerDashboard");
       } else {
         res.render("pages/login", {
           succ: false,
@@ -45,8 +45,8 @@ indexRouter.post("/login", (req, res) => {
   );
 });
 
-indexRouter.get("/dashboard", checkAuth, (req, res) => {
-  res.render("pages/dashboard");
+indexRouter.get("/partnerDashboard", checkAuth, (req, res) => {
+  res.render("pages/partnerDashboard");
 });
 
 indexRouter.get("/userProfile", checkAuth, (req, res) => {
