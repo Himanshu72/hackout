@@ -1,12 +1,10 @@
 const express = require("express");
 const indexRouter = express.Router();
- 
 
 //Middlewares for Auth
 const checkAuth = require("../middlewares/checkAuth");
 const Partner = require("../models/partner.model.js");
 const Consumer = require("../models/consumer.model.js");
-
 
 indexRouter.get("/", (req, res) => {
   res.render("pages/index", {});
@@ -36,8 +34,12 @@ indexRouter.post("/partnerLogin", (req, res) => {
             email: email
           }
         ];
+        const PartnerValues = Partner;
         req.session.user = loginValues;
-        res.redirect("/partnerDashboard");
+        console.log(PartnerValues);
+        res.render("pages/partnerDashboard", {
+          partnerObject: PartnerValues
+        });
       } else {
         res.render("pages/login", {
           succ: false,
@@ -63,8 +65,12 @@ indexRouter.post("/consumerLogin", (req, res) => {
             email: email
           }
         ];
+        const ConsumerValues = Consumer;
+        console.log(ConsumerValues);
         req.session.user = loginValues;
-        res.redirect("/consumerDashboard");
+        res.render("pages/userProfile", {
+          consumerObject: ConsumerValues
+        });
       } else {
         res.render("pages/login", {
           succ: false,
@@ -76,17 +82,18 @@ indexRouter.post("/consumerLogin", (req, res) => {
 });
 
 indexRouter.get("/consumerLogin", (req, res) => {
-  res.render("pages/consumerLogin", {});
+  res.render("pages/consumerLogin", { consumerObject: "" });
 });
 
 indexRouter.get("/partnerLogin", (req, res) => {
-  res.render("pages/partnerLogin", {});
+  res.render("pages/partnerLogin", {
+    partnerObject: ""
+  });
 });
 
 indexRouter.get("/upload", (req, res) => {
-    res.render("pages/upload",{filename : ''}), {parsedText : Text};
+  res.render("pages/upload", { filename: "" }), { parsedText: Text };
 });
-
 
 indexRouter.get("/partnerDashboard", checkAuth, (req, res) => {
   res.render("pages/partnerDashboard");
@@ -102,7 +109,6 @@ indexRouter.get("/userProfile", checkAuth, (req, res) => {
 
 indexRouter.get("/partnerActivities", checkAuth, (req, res) => {
   res.render("pages/partnerActivities");
-
 });
 
 indexRouter.get("/logout", (req, res) => {
@@ -110,8 +116,5 @@ indexRouter.get("/logout", (req, res) => {
     res.redirect("/");
   });
 });
-
-
-
 
 module.exports = indexRouter;
