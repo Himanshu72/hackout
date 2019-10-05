@@ -1,13 +1,30 @@
 // Express App Starts Here
-
 const express = require("express");
 const createError = require("http-errors");
 const path = require("path");
+
+// Required for authentication
+const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-
-// Set the bodyparser
 const bodyParser = require("body-parser");
+
+const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(cookieParser());
+app.use(
+  session({
+    key: "user_key",
+    secret: "mySecret",
+    proxy: true,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 3600000 // Time in ms
+    }
+  })
+);
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
@@ -29,7 +46,7 @@ const indexRouter = require("./routes/index.router");
 const consumerRouter = require("./routes/consumer.router");
 const partnerRouter = require("./routes/partner.router");
 
-const app = express();
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
