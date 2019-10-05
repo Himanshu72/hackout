@@ -93,7 +93,7 @@ indexRouter.get("/partnerDashboard", checkAuth, (req, res) => {
 });
 
 indexRouter.get("/consumerDashboard", checkAuth, (req, res) => {
-  res.render("pages/consumerDashboard");
+  res.render("pages/userProfile");
 });
 
 indexRouter.get("/userProfile", checkAuth, (req, res) => {
@@ -102,6 +102,7 @@ indexRouter.get("/userProfile", checkAuth, (req, res) => {
 
 indexRouter.get("/partnerActivities", checkAuth, (req, res) => {
   res.render("pages/partnerActivities");
+
 });
 
 indexRouter.get("/logout", (req, res) => {
