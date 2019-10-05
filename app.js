@@ -46,8 +46,6 @@ const indexRouter = require("./routes/index.router");
 const consumerRouter = require("./routes/consumer.router");
 const partnerRouter = require("./routes/partner.router");
 
-
-
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -66,7 +64,28 @@ app.use("/", partnerRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+const ocrSpaceApi = require("ocr-space-api");
 
+var options = {
+  apikey: " 8d56bdab8188957",
+  language: "eng", // Português
+  imageFormat: "image/png", // Image Type (Only png ou gif is acceptable at the moment i wrote this)
+  isOverlayRequired: true
+};
+
+// Image file to upload
+const imageFilePath = "./public/img/image.png";
+
+// Run and wait the result
+ocrSpaceApi
+  .parseImageFromLocalFile(imageFilePath, options)
+  .then(function(parsedResult) {
+    console.log("parsedText: \n", parsedResult.parsedText);
+    // console.log("ocrParsedResult: \n", parsedResult.ocrParsedResult);
+  })
+  .catch(function(err) {
+    console.log("ERROR:", err);
+  });
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

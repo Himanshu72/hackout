@@ -81,6 +81,10 @@ indexRouter.get("/partnerLogin", (req, res) => {
   res.render("pages/partnerLogin", {});
 });
 
+indexRouter.get("/upload", (req, res) => {
+  res.render("pages/upload", {});
+});
+
 indexRouter.get("/partnerDashboard", checkAuth, (req, res) => {
   res.render("pages/partnerDashboard");
 });
