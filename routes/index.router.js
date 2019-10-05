@@ -7,6 +7,7 @@ const checkAuth = require("../middlewares/checkAuth");
 const Partner = require("../models/partner.model.js");
 const Consumer = require("../models/consumer.model.js");
 
+
 indexRouter.get("/", (req, res) => {
   res.render("pages/index", {});
 });
@@ -83,13 +84,9 @@ indexRouter.get("/partnerLogin", (req, res) => {
 });
 
 indexRouter.get("/upload", (req, res) => {
-    res.render("pages/upload");
+    res.render("pages/upload",{filename : ''}), {parsedText : Text};
 });
 
-
-// indexRouter.post('/upload', upload.single('myFile'), (req, res, next) => {
-//     res.render("pages/upload");
-// })
 
 indexRouter.get("/partnerDashboard", checkAuth, (req, res) => {
   res.render("pages/partnerDashboard");
@@ -112,4 +109,8 @@ indexRouter.get("/logout", (req, res) => {
     res.redirect("/");
   });
 });
+
+
+
+
 module.exports = indexRouter;

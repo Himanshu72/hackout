@@ -22,13 +22,38 @@ app.post('/upload', function(req, res) {
 
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   let sampleFile = req.files.sampleFile;
-  let DATE = Date.now().toString();
+  let filename = "FILE" + Date.now().toString();
   // Use the mv() method to place the file somewhere on your server
-  sampleFile.mv(__dirname + `/FILE ${DATE}.jpg`, function(err) {
+  sampleFile.mv(`./public/img/${filename}.jpg`, function(err) {
     if (err)
       return res.status(500).send(err);
+    else{
+    // OCR API
+    const ocrSpaceApi = require("ocr-space-api");
+    const Text ="";
+    const options = {
+      apikey: " 8d56bdab8188957",
+      language: "eng", // language
+      imageFormat: "image/png", // Image Type 
+      isOverlayRequired: true
+    };
 
-    res.send('File uploaded!');
+    // Image file to upload
+    const imageFilePath = `./public/img/${filename}.png`;
+
+    // Run and wait the result
+    ocrSpaceApi
+      .parseImageFromLocalFile(imageFilePath, options)
+      .then(function(parsedResult) {
+       Text = parsedResult.parsedText
+        console.log("parsedText: \n", parsedResult.parsedText);
+        res.render("pages/upload",{filename:Text})
+        // console.log("ocrParsedResult: \n", parsedResult.ocrParsedResult);
+      })
+      .catch(function(err) {
+        console.log("ERROR:", err);
+      });
+    }
   });
 });
 
@@ -86,28 +111,7 @@ app.use("/", partnerRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
-const ocrSpaceApi = require("ocr-space-api");
 
-var options = {
-  apikey: " 8d56bdab8188957",
-  language: "eng", // language
-  imageFormat: "image/png", // Image Type 
-  isOverlayRequired: true
-};
-
-// Image file to upload
-const imageFilePath = "./public/img/image.png";
-
-// Run and wait the result
-ocrSpaceApi
-  .parseImageFromLocalFile(imageFilePath, options)
-  .then(function(parsedResult) {
-    console.log("parsedText: \n", parsedResult.parsedText);
-    // console.log("ocrParsedResult: \n", parsedResult.ocrParsedResult);
-  })
-  .catch(function(err) {
-    console.log("ERROR:", err);
-  });
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
