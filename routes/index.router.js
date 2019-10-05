@@ -21,20 +21,11 @@ indexRouter.use((req, res, next) => {
 
 // Login Route
 indexRouter.post("/login", (req, res) => {
-  const PartnerSchema = new Partner({
-    email: {
-      type: String
-    },
-    password: {
-      type: String
-    }
-  });
-
-  const PartnerModel = mongoose.model("PartnerModel", PartnerSchema);
-  PartnerModel.findOne(
+  const { email, password } = req.body;
+  Partner.findOne(
     {
-      email: req.body.email,
-      password: req.body.password
+      email: email,
+      password: password
     },
     (err, User) => {
       if (User) {
