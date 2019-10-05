@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const Partner = require("../models/partner.model.js");
 //Middlewares for Auth
 const checkAuth = require("../middlewares/checkAuth");
+
 indexRouter.get("/", (req, res) => {
   res.render("pages/index", {});
 });
@@ -44,6 +45,10 @@ indexRouter.post("/login", (req, res) => {
       }
     }
   );
+});
+
+indexRouter.get("/profile", checkAuth, (req, res) => {
+  res.render("pages/profile");
 });
 
 indexRouter.get("/login", (req, res) => {
