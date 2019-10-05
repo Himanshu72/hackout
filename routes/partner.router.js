@@ -7,7 +7,7 @@ const partner = require("../controllers/partner.controller.js");
 partnerRouter.post("/partner", partner.create);
 
 // Retrieve all partner
-//partnerRouter.get("/partner", partner.findAll);
+partnerRouter.get("/showPartners", partner.findAll);
 partnerRouter.get("/partnerRegisteration", (req, res) => {
   res.render("pages/partnerRegisteration");
 });

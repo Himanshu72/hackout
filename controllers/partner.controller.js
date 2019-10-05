@@ -10,20 +10,18 @@ exports.create = (req, res) => {
   //   }
   // Create a Partner
   const partner = new Partner({
-    // Fname: req.body.Fname,
-    // Lname: req.body.Lname
-    Fname: "truhd",
-    Lname: "bgcjdh",
-    email: "jbkhubhg",
-    aadhar: 3434232,
-    phone: 878434367547
+    Fname: req.body.Fname,
+    Lname: req.body.Lname,
+    email: req.body.email,
+    aadhar: req.body.phone,
+    phone: req.body.phone
   });
 
   // Save Partner in the database
   partner
     .save()
     .then(data => {
-      res.send(data);
+      res.redirect("/");
     })
     .catch(err => {
       res.status(500).send({

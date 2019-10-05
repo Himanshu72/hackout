@@ -68,18 +68,18 @@
 
 
                                                 <!--Body-->
-                                                <form action="https://formspree.io/contactswichteam@gmail.com"
+                                                <form action="/partner"
                                                     method="POST">
                                                     <div class="form-row mb-4">
                                                         <div class="col">
                                                             <!-- First name -->
-                                                            <input type="text" required name="first-name"
+                                                            <input type="text" required name="Fname"
                                                                 id="defaultRegisterFormFirstName" class="form-control"
                                                                 placeholder="First name">
                                                         </div>
                                                         <div class="col">
                                                             <!-- Last name -->
-                                                            <input type="text" required name="last-name"
+                                                            <input type="text" required name="Lname"
                                                                 id="defaultRegisterFormLastName" class="form-control"
                                                                 placeholder="Last name">
                                                         </div>
@@ -88,32 +88,42 @@
                                                     <input type="email" required name="email"
                                                         id="defaultRegisterFormEmail" class="form-control mb-4"
                                                         placeholder="E-mail">
-                                                    <div class="md-form">
-                                                        <!-- Subject -->
+                                                        
+                                                     <!-- password -->
+                                                     <input type="password" required name="password"
+                                                        id="defaultRegisterFormEmail" class="form-control mb-4"
+                                                        placeholder="Password">
 
-                                                        <select name="kind" required
-                                                            class="browser-default custom-select mb-4">
-                                                            <option value="" class="grey-text" selected disabled>Choose
-                                                               your gender</option>
-                                                            <option value="Full-time Job">Male</option>
-                                                            <option value="Part-time Job">Female</option>
-                                                            <option value="Freelance Job">Others</option>
-
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="form-group">
+                                                      <input type="password" required name="confirmpassword"
+                                                        id="defaultRegisterFormEmail" class="form-control mb-4"
+                                                        placeholder="Confirm Password">   
+                                                        
+                                                        <div class="form-group">
                                                         <!-- Phone number -->
                                                         <input type="number" required name="phone"
                                                             id="defaultRegisterPhonePassword" class="form-control"
                                                             placeholder="Phone number"
                                                             aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                                                        </div>
+                                                        <div class="form-group">
+
+                                                    <div class="md-form">
+                                                       
+                                                        <select name="gender" required
+                                                            class="browser-default custom-select mb-4">
+                                                            <option value="" class="grey-text" selected disabled>Choose
+                                                               your gender</option>
+                                                            <option value="Male">Male</option>
+                                                            <option value="Female">Female</option>
+                                                            <option value="Others">Others</option>
+
+                                                        </select>
                                                     </div>
+
                                                     
 
-
                                                     <div class="text-center">
-                                                        <input type="submit" value="Send" class="btn btn-purple round ">
+                                                        <input type="submit" value="Signup" class="btn btn-purple round ">
                                                         <div class="mt-4">
                                                             <p>Already a member? <a href="/login">Login</a></p>
                                                         </div>

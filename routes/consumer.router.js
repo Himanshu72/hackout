@@ -7,7 +7,8 @@ const consumer = require("../controllers/consumer.controller.js");
 //consumerRouter.post("/consumer", consumer.create);
 consumerRouter.post("/consumer", consumer.create);
 // Retrieve all consumer
-//consumerRouter.get("/consumer", consumer.findAll);
+consumerRouter.get("/showConsumers", consumer.findAll);
+
 consumerRouter.get("/consumerRegisteration", (req, res) => {
   res.render("pages/consumerRegisteration");
 });

@@ -11,7 +11,14 @@ const NewConsumerSchema = new Schema(
       type: String,
       required: true
     },
-
+     password: {
+      type: String,
+      required: true
+    },
+    role: {
+      type: String,
+      default: "consumer"
+    },
     email: {
       type: String,
       unique: true,

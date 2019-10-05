@@ -4,20 +4,18 @@ const Consumer = require("../models/consumer.model.js");
 exports.create = (req, res) => {
   // Create a Consumer
   const consumer = new Consumer({
-    // Fname: req.body.Fname,
-    // Lname: req.body.Lname
-    Fname: "koja",
-    Lname: "lokhh",
-    email: "ooiikk",
-    phone: 8778899977,
-    aadhar: 0909754212
+    Fname: req.body.Fname,
+    Lname: req.body.Lname,
+    email: req.body.email,
+    aadhar: req.body.phone,
+    phone: req.body.phone
   });
 
   // Save consumer in the database
   consumer
     .save()
     .then(data => {
-      res.send(data);
+      res.redirect("/");
     })
     .catch(err => {
       res.status(500).send({
