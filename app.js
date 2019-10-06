@@ -18,7 +18,6 @@ app.post("/upload", function(req, res) {
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send("No files were uploaded.");
   }
-
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   let sampleFile = req.files.sampleFile;
   let filename = "FILE" + Date.now().toString();
@@ -26,33 +25,36 @@ app.post("/upload", function(req, res) {
   sampleFile.mv(__dirname + "/public/img/FILE1570299498752.jpg", function(err) {
     if (err) return res.status(500).send(err);
     else {
-      // OCR API
-      const ocrSpaceApi = require("ocr-space-api");
-      const Text = "";
-      const options = {
-        apikey: " 8d56bdab8188957",
-        language: "eng", // language
-        imageFormat: "image/png", // Image Type
-        isOverlayRequired: true
-      };
-
-      // Image file to upload
-      const imageFilePath = `./public/img/${filename}.png`;
-
-      // Run and wait the result
-      ocrSpaceApi
-        .parseImageFromLocalFile(imageFilePath, options)
-        .then(function(parsedResult) {
-          Text = parsedResult.parsedText;
-          console.log("parsedText: \n", parsedResult.parsedText);
-          res.render("pages/upload", { filename: Text });
-          // console.log("ocrParsedResult: \n", parsedResult.ocrParsedResult);
-        })
-        .catch(function(err) {
-          console.log("ERROR:", err);
-        });
     }
   });
+});
+
+app.get("/upload", function(req, res) {
+  // OCR API
+  const ocrSpaceApi = require("ocr-space-api");
+
+  const options = {
+    apikey: " 8d56bdab8188957",
+    language: "eng", // language
+    imageFormat: "image/jpg", // Image Type
+    isOverlayRequired: true
+  };
+
+  // Image file to upload
+  const imageFilePath = `./public/img/image.png`;
+
+  // Run and wait the result
+  ocrSpaceApi
+    .parseImageFromLocalFile(imageFilePath, options)
+    .then(function(parsedResult) {
+      const Text = parsedResult.parsedText;
+      console.log("parsedText: \n", parsedResult.parsedText);
+      res.redirect("/rconsumerDashboard", { filename: Text });
+      // console.log("ocrParsedResult: \n", parsedResult.ocrParsedResult);
+    })
+    .catch(function(err) {
+      console.log("ERROR:", err);
+    });
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));

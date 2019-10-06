@@ -108,7 +108,7 @@ indexRouter.get("/upload", (req, res) => {
   res.render("pages/upload", { filename: "" }), { parsedText: Text };
 });
 
-indexRouter.get("/partnerDashboard/:email", checkAuth, (req, res) => {
+indexRouter.get("/partnerDashboard/", checkAuth, (req, res) => {
   Partner.find({}, function(err, partners) {
     res.render("pages/partnerDashboard", {
       partnerObject: partners

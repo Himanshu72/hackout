@@ -1,11 +1,12 @@
 const Accept = require("../models/accept.model.js");
-
+const Request = require("../models/request.model.js");
 // Create and Save a new Request
 exports.create = (req, res) => {
   // Create a Partner
   const accept = new Accept({
     consumerName: req.body.Fname + req.body.Lname,
     need: req.body.need,
+    id: req.body.id,
     examcenter: req.body.examcenter,
     field: req.body.field,
     subject: req.body.subject,
@@ -26,6 +27,29 @@ exports.create = (req, res) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while creating the Partner."
+      });
+    });
+};
+
+// Delete a Partner with the specified PartnerId in the request
+exports.delete = (req, res) => {
+  Request.findByIdAndRemove(id)
+    .then(request => {
+      if (!request) {
+        return res.status(404).send({
+          message: "Request not found with id " + id
+        });
+      }
+      res.send({ message: "Request deleted successfully!" });
+    })
+    .catch(err => {
+      if (err.kind === "ObjectId" || err.name === "NotFound") {
+        return res.status(404).send({
+          message: "Request not found with id " + req.params.PartnerId
+        });
+      }
+      return res.status(500).send({
+        message: "Could not delete Request with id " + req.params.PartnerId
       });
     });
 };
@@ -103,29 +127,6 @@ exports.create = (req, res) => {
 //       }
 //       return res.status(500).send({
 //         message: "Error updating Partner with id " + req.params.PartnerId
-//       });
-//     });
-// };
-
-// // Delete a Partner with the specified PartnerId in the request
-// exports.delete = (req, res) => {
-//   Partner.findByIdAndRemove(req.params.PartnerId)
-//     .then(Partner => {
-//       if (!Partner) {
-//         return res.status(404).send({
-//           message: "Partner not found with id " + req.params.PartnerId
-//         });
-//       }
-//       res.send({ message: "Partner deleted successfully!" });
-//     })
-//     .catch(err => {
-//       if (err.kind === "ObjectId" || err.name === "NotFound") {
-//         return res.status(404).send({
-//           message: "Partner not found with id " + req.params.PartnerId
-//         });
-//       }
-//       return res.status(500).send({
-//         message: "Could not delete Partner with id " + req.params.PartnerId
 //       });
 //     });
 // };

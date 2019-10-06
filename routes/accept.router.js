@@ -5,7 +5,7 @@ const accept = require("../controllers/accept.controller.js");
 
 // Create a new Note
 //consumerRouter.post("/consumer", consumer.create);
-acceptRouter.post("/accept", accept.create, checkAuth);
+acceptRouter.post("/accept", accept.create, accept.delete, checkAuth);
 // Retrieve all consumer
 //acceptRouter.get("/showRequest", accept.findAll);
 
@@ -16,6 +16,6 @@ acceptRouter.post("/accept", accept.create, checkAuth);
 // requestRouter.put("/consumerDashboard/:ConsumerId", consumer.update);
 
 // // Delete a Note with noteId
-// requestRouter.delete("/consumer/:ConsumerId", consumer.delete);
+//acceptRouter.delete("/accept", accept.delete);
 
 module.exports = acceptRouter;
