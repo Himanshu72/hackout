@@ -98,6 +98,12 @@ indexRouter.get("/consumerLogin", (req, res) => {
   });
 });
 
+indexRouter.get("/speak", (req, res) => {
+  Partner.find({}, function(err, partners) {
+    res.render("pages/speak");
+  });
+});
+
 indexRouter.get("/partnerLogin", (req, res) => {
   res.render("pages/partnerLogin", {
     partnerObject: ""

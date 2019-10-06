@@ -368,20 +368,9 @@
                   
                   <div class="swiper-slide">
                    
-                  <div class="rgba-gradient" style="margin-top:5%;">
+                  
         <div class="container">
-            <!--Section: Contact-->
-            <section id="contact">
-
-                <div class="container h-100 d-flex justify-content-center align-items-center">
-
-                    <!--Grid row-->
-                    <div class="row pt-5 mt-3">
-
-                        <!--Grid column-->
-                        <div class="col-md-12">
-
-                            <div class="card">
+             <div class="card mt-10">
                                 <div class="card-body">
 
                                     <h2 class="font-weight-bold my-4 text-center mb-5 mt-4 head font-weight-bold">
@@ -415,7 +404,7 @@
 
 
                                                 <!--Body-->
-                                                <form class="mt-5"  ref='uploadForm' id='uploadForm'  enctype="multipart/form-data"
+                                                <form class="mt-5" id='uploadForm'  enctype="multipart/form-data"
                                                     method="POST" action="/upload">
                                     <div class="input-group mb-4">
                                         <div class="input-group-prepend">
@@ -431,63 +420,8 @@
                                                         <input type="submit" value="Upload" class="btn btn-purple round ">
                                                     </div>
                                                 </form>
-                                                <div class="form-group mt-3">
-                         <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="5"> 
-                                            <% if (filename) { %>
-                                    <%= filename %>
-                                            <% } %> <% if (!filename) { %>
-                                            
-                                            <% } %></textarea>
-                                                    </div>
-
-                                            </div>
-                                            <!--Naked Form-->
-                                        </div>
-                                        <!--Grid column-->
-
-                                    </div>
-                                    <!--Grid row-->
-
                                 </div>
-                            </div>
-
-                        </div>
-                        <!--Grid column-->
-
-                    </div>
-                    <!--Grid row-->
-
-                </div>
-            </section>
-            <!--Section Contact-->
-        </div>
-
-        <!-- FOOTER SVG -->
-        <div class="svrow">
-            <svg id="footer-svg" preserveAspectRatio="xMidYMax meet" class="svg-separator sep4" viewBox="0 0 1600 200"
-                style="display: block;" data-height="200">
-                <polygon class="" style="fill: rgb(255, 255, 255);"
-                    points="886,86 800,172 714,86 -4,86 -4,204 1604,204 1604,86 ">
-                </polygon>
-            </svg>
-        </div>
-
-    </div>
-
-        </div>
-
-        <!-- FOOTER SVG -->
-        <div class="svrow">
-            <svg id="footer-svg" preserveAspectRatio="xMidYMax meet" class="svg-separator sep4" viewBox="0 0 1600 200"
-                style="display: block;" data-height="200">
-                <polygon class="" style="fill: rgb(255, 255, 255);"
-                    points="886,86 800,172 714,86 -4,86 -4,204 1604,204 1604,86 ">
-                
-                </polygon>
-            </svg>
-        </div>
-
-    </div>
+                           </div>
 
     <!--Main layout-->
 </main>
@@ -541,7 +475,7 @@ window.speechSynthesis.speak(msg)
 
         }else if(swiper.activeIndex==2){
 
-            var msg = new SpeechSynthesisUtterance('available writers');
+            var msg = new SpeechSynthesisUtterance('Reading Matirial');
 window.speechSynthesis.speak(msg)
         } 
 
