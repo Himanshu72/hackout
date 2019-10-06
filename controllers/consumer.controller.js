@@ -4,32 +4,42 @@ const Consumer = require("../models/consumer.model.js");
 exports.create = (req, res) => {
   // Validate Request
   if (req.body.password !== req.body.confirmpassword) {
-    return res.status(400).send({
-      message: "Passwords should match"
+    res.render("pages/consumerRegisteration", {
+      emailError: false,
+      passError: true
     });
   }
-  // Create a Consumer
-  const consumer = new Consumer({
-    Fname: req.body.Fname,
-    Lname: req.body.Lname,
-    email: req.body.email,
-    password: req.body.password,
-    aadhar: req.body.phone,
-    phone: req.body.phone
-  });
-
-  // Save consumer in the database
-  consumer
-    .save()
-    .then(data => {
-      res.redirect("/");
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Consumer."
+  //a simple if/else to check if email already exists in db
+  Consumer.findOne({ email: req.body.email }, function(err, consumer) {
+    if (err) {
+      err.status = 400;
+    } else if (consumer) {
+      res.render("pages/consumerRegisteration", { emailError: true });
+    } else {
+      // Create a Consumer
+      const consumer = new Consumer({
+        Fname: req.body.Fname,
+        Lname: req.body.Lname,
+        email: req.body.email,
+        password: req.body.password,
+        aadhar: req.body.phone,
+        phone: req.body.phone
       });
-    });
+
+      // Save consumer in the database
+      consumer
+        .save()
+        .then(data => {
+          res.redirect("/consumerLogin");
+        })
+        .catch(err => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while creating the Consumer."
+          });
+        });
+    }
+  });
 };
 
 // Retrieve and return all Consumers from the database.

@@ -2,11 +2,24 @@
 <html lang="en">
 <head>
   <%- include('../partial/head'); -%>
+  <%- include('../partial/mic'); -%>
 </head>
 
   <%- include('../partial/navbar'); -%>
 <main>
     <!--SECTION SEPARATOR-->
+
+<% if(passError){ %>
+  <script>
+swal("Error", "Passwords dont match", "error");
+</script>
+<%}%>
+
+<% if(emailError){ %>
+  <script>
+swal("Error", "This email already exists", "error");
+</script>
+<%}%>
 
     <div class="rgba-gradient" style="margin-top:5%;">
         <div class="container">
@@ -65,7 +78,7 @@
 
 
                                                 <!--Body-->
-                                                <form action="consumer"
+                                                <form action="/consumer"
                                                     method="POST">
                                                     <div class="form-row mb-4">
                                                         <div class="col">

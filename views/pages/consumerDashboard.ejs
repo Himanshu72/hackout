@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include('../partial/head'); -%>
+<%- include('../partial/head'); -%>
+  <%- include('../partial/mic'); -%>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css" />
 
   <nav class="navbar navbar-expand-lg navbar-light fixed-top white animated fadeInDownBig ">
@@ -84,27 +85,6 @@
             <!--Section: Contact-->
             <div class="swiper-container ">
                 <div class="swiper-wrapper">
-                <div class="swiper-slide mb-5">
-                    <section id="contact">
-
-                        <div class="container h-100 d-flex justify-content-center align-items-center">
-        
-                            <!--Grid row-->
-                            <div class="row pt-5 mt-3">
-        
-                                <!--Grid column-->
-                                <div class="col-md-12">
-        
-                                    <div class="card" id="profile">
-                                        <div class="card-body">
-        
-                                            <h2 class="font-weight-bold my-4 text-center mb-5 mt-4 head font-weight-bold">
-                                                <strong>Notifications</strong>
-                                            </h2>
-        
-                        </div>
-                    </section>
-                  </div>
                   <div class="swiper-slide mb-5">
                     <section id="contact">
 
@@ -480,23 +460,18 @@
 
   var swiper = new Swiper('.swiper-container');
     swiper.on('slideChange',function(){
-        if(swiper.activeIndex==0){
+        if(swiper.activeIndex==1){
 //profile
-var msg = new SpeechSynthesisUtterance('Notifications');
+var msg = new SpeechSynthesisUtterance('Profile');
 window.speechSynthesis.speak(msg)
 
         }else if(swiper.activeIndex==1){
 //book writer
-var msg = new SpeechSynthesisUtterance('Profile');
+var msg = new SpeechSynthesisUtterance('Post For Help');
 window.speechSynthesis.speak(msg)
 
 
         }else if(swiper.activeIndex==2){
-
-            var msg = new SpeechSynthesisUtterance('Post For Help');
-window.speechSynthesis.speak(msg)
-        } 
-        else if(swiper.activeIndex==3){
 
             var msg = new SpeechSynthesisUtterance('Text to speech');
 window.speechSynthesis.speak(msg)

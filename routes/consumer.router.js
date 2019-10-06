@@ -58,8 +58,12 @@ consumerRouter.post("/consumer", consumer.create);
 consumerRouter.get("/showConsumers", consumer.findAll);
 
 consumerRouter.get("/consumerRegisteration", (req, res) => {
-  res.render("pages/consumerRegisteration");
+  res.render("pages/consumerRegisteration", {
+    emailError: false,
+    passError: false
+  });
 });
+
 // Retrieve a single Note with noteId
 consumerRouter.get("/consumer/:ConsumerId", consumer.findOne);
 
