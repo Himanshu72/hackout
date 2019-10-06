@@ -64,7 +64,6 @@ const NewPartnerSchema = new Schema(
     },
     aadhar: {
       type: Number,
-      unique: true,
       required: true
     },
     languages: {

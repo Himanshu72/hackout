@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const NewRequestSchema = new Schema(
+const NewActivitySchema = new Schema(
   {
     consumerName: {
       type: String,
@@ -29,6 +29,7 @@ const NewRequestSchema = new Schema(
     },
     language: {
       type: String,
+
       required: true
     },
     date: {
