@@ -3,6 +3,14 @@ const Schema = mongoose.Schema;
 
 const NewAcceptSchema = new Schema(
   {
+    partnerName: {
+      type: String,
+      required: false
+    },
+    consumerName: {
+      type: String,
+      required: true
+    },
     need: {
       type: String,
       required: true

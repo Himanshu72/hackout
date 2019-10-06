@@ -89,21 +89,34 @@
     </div>
 
 <div class="container">
+<form action="/accept" method = "POST">
     <!-- Card -->
     <% for(let item of needObject){ %>
   <div class="card justify-content-center center-content w-75 mt-5">
   <!-- Card content -->
   <div class="card-body">
     <!-- Title -->
-    <h4 class="card-title"><a><%= item.need%></a></h4>
+    <h4 class="card-title"><a><%= item.need%></a> needed by <%= item.consumerName%></a> </h4>
     <!-- Text -->
+    <p class="card-text">Language : <%= item.language%> </p>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <!-- Button -->
-    <a href="#" class="btn btn-teal">Help</a>
-    <a href="#" class="btn btn-danger">Reject</a>
+     
+    <input type="hidden" name="consumerName" value="<%= item.consumerName%>">
+    <input type="hidden" name="need" value="<%= item.need%>">
+    <input type="hidden" name="examcenter" value="<%= item.examcenter%>">
+    <input type="hidden" name="field" value="<%= item.field%>">
+     <input type="hidden" name="subject" value="<%= item.subject%>">
+      <input type="hidden" name="postalcode" value="<%= item.postalcode%>">
+        <input type="hidden" name="language" value="<%= item.postalcode%>">
+            <input type="hidden" name="date" value="<%= item.postalcode%>">
+                <input type="hidden" name="time" value="<%= item.postalcode%>">
+    <button type="submit" class="btn btn-teal">Volunteer</button>
+    <button type="button" class="btn btn-danger">Reject</button>
 
   </div>
 </div>
+</form>
  <% }%>
 <!-- Card -->
 

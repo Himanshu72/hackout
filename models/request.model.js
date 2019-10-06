@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 const NewRequestSchema = new Schema(
   {
+    consumerName: {
+      type: String,
+      required: true
+    },
     need: {
       type: String,
       required: true

@@ -41,8 +41,8 @@ indexRouter.post("/partnerLogin", (req, res) => {
           }
         ];
         const PartnerValues = Partner;
+        const session = req.session;
         req.session.user = loginValues;
-        console.log(PartnerValues);
         res.render("pages/partnerDashboard", {
           partnerObject: PartnerValues
         });
@@ -108,12 +108,36 @@ indexRouter.get("/upload", (req, res) => {
   res.render("pages/upload", { filename: "" }), { parsedText: Text };
 });
 
-indexRouter.get("/partnerDashboard", checkAuth, (req, res) => {
+indexRouter.get("/partnerDashboard/:email", checkAuth, (req, res) => {
   Partner.find({}, function(err, partners) {
     res.render("pages/partnerDashboard", {
-      partners: partners
+      partnerObject: partners
     });
   });
+  //   const email = req.params.email;
+  //   Partner.findOne(
+  //     {
+  //       email: email
+  //     },
+  //     (err, Partner) => {
+  //       if (Partner) {
+  //         let loginValues = [
+  //           {
+  //             email: email
+  //           }
+  //         ];
+  //         const PartnerValues = Partner;
+  //         res.render("pages/partnerDashboard", {
+  //           partnerObject: PartnerValues
+  //         });
+  //       } else {
+  //         res.render("pages/partnerLogin", {
+  //           succ: false,
+  //           err: true
+  //         });
+  //       }
+  //     }
+  //   );
 });
 
 // indexRouter.get("/consumerDashboard", checkAuth, (req, res) => {
