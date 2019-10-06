@@ -33,10 +33,15 @@ function handleResult({ results }) {
    speak("Opening login")
     open("/consumerLogin")
   }
-  if(data.match(/support/)){
+  else if(data.match(/support/)){
       console.log("try")
     speak("opening support form");
     open("/partnerRegisteration");  
+}
+else if(data.match(/home/)){
+      console.log("try")
+    speak("going to home page");
+    open("/");  
 }
 }
 
