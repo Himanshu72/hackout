@@ -29,6 +29,25 @@ exports.create = (req, res) => {
           err.message || "Some error occurred while creating the Partner."
       });
     });
+  Request.findByIdAndRemove(req.body.id)
+    .then(request => {
+      if (!request) {
+        return res.status(404).send({
+          message: "Request not found with id " + id
+        });
+      }
+      res.redirect("/partnerDashboard");
+    })
+    .catch(err => {
+      if (err.kind === "ObjectId" || err.name === "NotFound") {
+        return res.status(404).send({
+          message: "Request not found with id " + req.params.PartnerId
+        });
+      }
+      return res.status(500).send({
+        message: "Could not delete Request with id " + req.params.PartnerId
+      });
+    });
 };
 
 // Delete a Partner with the specified PartnerId in the request
